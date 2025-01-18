@@ -29,9 +29,10 @@ jobs:
                   poetry run black . --check
             - name: Test with pytest
               run: |
-                  poetry run pytest --cov-branch --cov-report=xml
+                  poetry run pytest --cov=src --cov-branch --cov-report=xml
             - name: Upload coverage reports to Codecov
               uses: codecov/codecov-action@v5
               with:
                 token: ${{ secrets.CODECOV_TOKEN }}
+                slug: jamesidw/momoapi-python
 
