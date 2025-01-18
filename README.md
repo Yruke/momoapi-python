@@ -14,7 +14,6 @@
 [![Build Status](https://travis-ci.com/sparkplug/momoapi-python.svg?branch=master)](https://travis-ci.com/sparkplug/momoapi-node)
 [![Latest Version](https://img.shields.io/pypi/v/tox-travis.svg)](https://badge.fury.io/js/mtn-momo)
 [![Coverage Status](https://coveralls.io/repos/github/sparkplug/momoapi-python/badge.svg?branch=master)](https://coveralls.io/github/sparkplug/momoapi-python?branch=master)
-[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/momo-api-developers/)
 
 
 # Usage
@@ -31,9 +30,9 @@ This library supports Python 2.7+ or Python 3.4+ (PyPy supported)
 
 # Sandbox Environment
 
-## Creating a sandbox environment API user 
+## Creating a sandbox environment API user
 
-Next, we need to get the `User ID` and `User Secret` and to do this we shall need to use the Primary Key for the Product to which we are subscribed, as well as specify a host. The library ships with a commandline application that helps to create sandbox credentials. It assumes you have created an account on `https://momodeveloper.mtn.com` and have your `Ocp-Apim-Subscription-Key`. 
+Next, we need to get the `User ID` and `User Secret` and to do this we shall need to use the Primary Key for the Product to which we are subscribed, as well as specify a host. The library ships with a commandline application that helps to create sandbox credentials. It assumes you have created an account on `https://momodeveloper.mtn.com` and have your `Ocp-Apim-Subscription-Key`.
 
 ```bash
 ## within the project, on the command line. In this example, our domain is akabbo.ug
@@ -58,24 +57,24 @@ Before we can fully utilize the library, we need to specify global configuration
 * `ENVIRONMENT`: Optional environment, either "sandbox" or "production". Default is 'sandbox'
 * `CALLBACK_HOST`: The domain where you webhooks urls are hosted. This is mandatory.
 
-Once you have specified the global variables, you can now provide the product-specific variables. Each MoMo API product requires its own authentication details i.e its own `Subscription Key`, `User ID` and `User Secret`, also sometimes refered to as the `API Secret`. As such, we have to configure subscription keys for each product you will be using. 
+Once you have specified the global variables, you can now provide the product-specific variables. Each MoMo API product requires its own authentication details i.e its own `Subscription Key`, `User ID` and `User Secret`, also sometimes refered to as the `API Secret`. As such, we have to configure subscription keys for each product you will be using.
 
 The full list of configuration options can be seen in the example below:
 
  ```python
  config = {
-    "ENVIRONMENT": os.environ.get("ENVIRONMENT"), 
-    "BASE_URL": os.environ.get("BASE_URL"), 
+    "ENVIRONMENT": os.environ.get("ENVIRONMENT"),
+    "BASE_URL": os.environ.get("BASE_URL"),
     "CALLBACK_HOST": os.environ.get("CALLBACK_HOST"), # Mandatory.
-    "COLLECTION_PRIMARY_KEY": os.environ.get("COLLECTION_PRIMARY_KEY"), 
+    "COLLECTION_PRIMARY_KEY": os.environ.get("COLLECTION_PRIMARY_KEY"),
     "COLLECTION_USER_ID": os.environ.get("COLLECTION_USER_ID"),
     "COLLECTION_API_SECRET": os.environ.get("COLLECTION_API_SECRET"),
-    "REMITTANCE_USER_ID": os.environ.get("REMITTANCE_USER_ID"), 
+    "REMITTANCE_USER_ID": os.environ.get("REMITTANCE_USER_ID"),
     "REMITTANCE_API_SECRET": os.environ.get("REMITTANCE_API_SECRET"),
     "REMITTANCE_PRIMARY_KEY": os.envieon.get("REMITTANCE_PRIMARY_KEY"),
-    "DISBURSEMENT_USER_ID": os.environ.get("DISBURSEMENT_USER_ID"), 
+    "DISBURSEMENT_USER_ID": os.environ.get("DISBURSEMENT_USER_ID"),
     "DISBURSEMENT_API_SECRET": os.environ.get("DISBURSEMENTS_API_SECRET"),
-    "DISBURSEMENT_PRIMARY_KEY": os.environ.get("DISBURSEMENT_PRIMARY_KEY"), 
+    "DISBURSEMENT_PRIMARY_KEY": os.environ.get("DISBURSEMENT_PRIMARY_KEY"),
 }
 ```
 
@@ -106,7 +105,7 @@ client = Collection({
 
 1. `requestToPay`: This operation is used to request a payment from a consumer (Payer). The payer will be asked to authorize the payment. The transaction is executed once the payer has authorized the payment. The transaction will be in status PENDING until it is authorized or declined by the payer or it is timed out by the system. Status of the transaction can be validated by using `getTransactionStatus`.
 
-2. `getTransactionStatus`: Retrieve transaction information using the `transactionId` returned by `requestToPay`. You can invoke it at intervals until the transaction fails or succeeds. If the transaction has failed, it will throw an appropriate error. 
+2. `getTransactionStatus`: Retrieve transaction information using the `transactionId` returned by `requestToPay`. You can invoke it at intervals until the transaction fails or succeeds. If the transaction has failed, it will throw an appropriate error.
 
 3. `getBalance`: Get the balance of the account.
 

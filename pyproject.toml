@@ -1,0 +1,39 @@
+[project]
+name = "momosdk-python"
+version = "0.1.0"
+description = "Python wrapper for the MTN MoMo API."
+authors = [
+    {name = "Sidney Wasibani",email = "jamesidw@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "requests (>=2.32.3,<3.0.0)",
+    "click (>=8.1.8,<9.0.0)",
+    "phonenumbers (>=8.13.53,<9.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages = [{include = "mtnmomo", from="src"}]
+
+[tool.poetry.scripts]
+mtnmomo = "mtnmomo.cli:main"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-cov = "^6.0.0"
+pytest-watch = "^4.2.0"
+pytest-pep8 = "^1.0.6"
+pytest-sugar = "^1.0.0"
+mock = "^5.1.0"
+pytest-bdd = "^8.1.0"
+pytest-instafail = "^0.5.0"
+tox = "^4.23.2"
+black = "^24.10.0"
+

@@ -9,7 +9,7 @@ from mtnmomo.disbursement import Disbursement
 pytest.globalDict = {}
 
 
-@scenario('features/disbursements.feature', 'Transfer Money to another account')
+@scenario("features/disbursements.feature", "Transfer Money to another account")
 def test_disbursements():
     pass
 
@@ -25,11 +25,18 @@ def user_credentials():
     pytest.globalDict["client"] = client
 
 
-@when("I transfer with the following payment details\n| note         | amount | message | mobile     | product_id |\n| test payment | 600    | message | 0782631873 | 0001       |")
+@when(
+    "I transfer with the following payment details\n| note         | amount | message | mobile     | product_id |\n| test payment | 600    | message | 0782631873 | 0001       |"
+)
 def successful_transfer():
     ref = pytest.globalDict["client"].transfer(
-        amount="600", mobile="256772123456", external_id="123456789", payee_note="dd", payer_message="dd",
-        currency="EUR")
+        amount="600",
+        mobile="256772123456",
+        external_id="123456789",
+        payee_note="dd",
+        payer_message="dd",
+        currency="EUR",
+    )
     pytest.globalDict["ref"] = ref
 
     assert isinstance(ref, dict)
@@ -38,7 +45,9 @@ def successful_transfer():
 
 @when("I check for transaction Status")
 def check_transaction_status():
-    status = pytest.globalDict["client"].getTransactionStatus(pytest.globalDict["ref"]["transaction_ref"])
+    status = pytest.globalDict["client"].getTransactionStatus(
+        pytest.globalDict["ref"]["transaction_ref"]
+    )
     pytest.globalDict["status"] = status
     assert isinstance(status, dict)
     assert "amount" in status.keys()

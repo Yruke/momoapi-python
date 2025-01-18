@@ -14,6 +14,7 @@ Why does this file exist, and why not put this in __main__?
 
   Also see (1) from http://click.pocoo.org/5/setuptools/#setuptools-integration
 """
+
 import json
 import time
 import uuid
@@ -28,18 +29,20 @@ def generateToken(host, key):
     headers = {
         "X-Reference-Id": token,
         "Content-Type": "application/json",
-        "Ocp-Apim-Subscription-Key": key
+        "Ocp-Apim-Subscription-Key": key,
     }
 
     requests.post(
         "https://ericssonbasicapi2.azure-api.net/v1_0/apiuser",
         data=json.dumps(data),
-        headers=headers)
+        headers=headers,
+    )
     time.sleep(5)
 
     del headers["X-Reference-Id"]
     url = "https://ericssonbasicapi2.azure-api.net/v1_0/apiuser/{0}/apikey".format(
-        token)
+        token
+    )
 
     res = requests.post(url, data=json.dumps({}), headers=headers)
 
@@ -54,13 +57,9 @@ def generateToken(host, key):
 
 
 @click.command()
+@click.option("--provider", prompt="providerCallBackHost", help="providerCallBackHost")
 @click.option(
-    '--provider',
-    prompt="providerCallBackHost",
-    help='providerCallBackHost')
-@click.option(
-    '--key',
-    prompt="Ocp-Apim-Subscription-Key",
-    help='Ocp-Apim-Subscription-Key')
+    "--key", prompt="Ocp-Apim-Subscription-Key", help="Ocp-Apim-Subscription-Key"
+)
 def main(provider, key):
     click.echo(generateToken(provider, key))
