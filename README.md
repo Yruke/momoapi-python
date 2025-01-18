@@ -1,32 +1,24 @@
 # MTN MoMo API Python Client</h1>
 
-<strong>Power your apps with our MTN MoMo API</strong>
-
-<div>
-  Join our active, engaged community: <br>
-  <a href="https://momodeveloper.mtn.com/">Website</a>
-  <span> | </span>
-  <a href="https://spectrum.chat/momo-api-developers/">Spectrum</a>
-  <br><br>
-</div>
-
-
-[![Build Status](https://travis-ci.com/sparkplug/momoapi-python.svg?branch=master)](https://travis-ci.com/sparkplug/momoapi-node)
 [![Latest Version](https://img.shields.io/pypi/v/tox-travis.svg)](https://badge.fury.io/js/mtn-momo)
-[![Coverage Status](https://coveralls.io/repos/github/sparkplug/momoapi-python/badge.svg?branch=master)](https://coveralls.io/github/sparkplug/momoapi-python?branch=master)
+[![codecov](https://codecov.io/github/jamesidw/momoapi-python/graph/badge.svg?token=1FEYUPADTN)](https://codecov.io/github/jamesidw/momoapi-python)
 
+This is a fork to fix a problem for a particular business. The original project hasn't been updated in a while and maintaining code that uses it
+has proved difficult....this library was frozen in time and updates were stalled
 
-# Usage
+The original project was Open Source and that remains true. Borrow the code, contribute, whatever; just don't sue me if it does not work
 
-## Installation
+Thanks to the original authors
+
+## Usage
+
+### Installation
 
 Add the latest version of the library to your project using pip:
 
 ```bash
- $ pip install mtnmomo
+ $ pip install momosdk-python
 ```
-
-This library supports Python 2.7+ or Python 3.4+ (PyPy supported)
 
 # Sandbox Environment
 

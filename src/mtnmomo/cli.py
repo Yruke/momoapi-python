@@ -36,6 +36,7 @@ def generateToken(host, key):
         "https://ericssonbasicapi2.azure-api.net/v1_0/apiuser",
         data=json.dumps(data),
         headers=headers,
+        timeout=30,
     )
     time.sleep(5)
 
@@ -44,7 +45,7 @@ def generateToken(host, key):
         token
     )
 
-    res = requests.post(url, data=json.dumps({}), headers=headers)
+    res = requests.post(url, data=json.dumps({}), headers=headers, timeout=30)
 
     rr = res.json()
     ret = {}

@@ -139,6 +139,7 @@ class MomoApi(ClientInterface, object):
             ),
             data=data,
             headers=headers,
+            timeout=30,
         )
         return response
 
@@ -177,7 +178,7 @@ class MomoApi(ClientInterface, object):
 
         url = base_url + "/v1_0/apiuser/{0}/apikey".format(api_user)
 
-        res = requests.post(url, data=json.dumps(data), headers=headers)
+        res = requests.post(url, data=json.dumps(data), headers=headers, timeout=30)
 
         return res.json()
 
